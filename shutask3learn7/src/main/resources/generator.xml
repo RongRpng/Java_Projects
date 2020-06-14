@@ -68,6 +68,9 @@
         <table schema="db_wechat" tableName="content"
                enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table schema="db_wechat" tableName="user"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
 
 
 
