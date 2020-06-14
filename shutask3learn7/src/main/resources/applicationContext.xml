@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+               http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <!--开启扫描-->
+    <!--&lt;!&ndash;    使用注解注入，base-pakage路径下所有用到注解的都会被装配进容器里&ndash;&gt;-->
+    <context:component-scan base-package="cn.Esther" />
+
+    <!--加载外部配置文件，方便环境切换直接换配置文件就行-->
+    <context:property-placeholder location = "classpath:properties/db.properties"/>
+
+
+
+
+
+<!--    数据库连接池，DataSource就是一个类，通过set方法把属性给注入进去-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name = "driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="root"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+<!--    spring和mybatis整合-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+<!--        自动扫描mapping.xml文件，这里是调用usermapper.xml-->
+        <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+<!--        配置sqlSessionFactoryBean的名称-->
+        <property name="basePackage" value="cn.Esther.dao"/>
+<!--        "sqlSessionFactory"放进去-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+</beans>
+<!--19.24-->
+
