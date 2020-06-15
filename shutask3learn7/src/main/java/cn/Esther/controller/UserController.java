@@ -50,7 +50,7 @@ public class UserController {
         return resultMap;
     }
 
-    //    查询用户-id
+    //    查询用户-id -beta
     @ResponseBody
     @RequestMapping(value = "/a/u/user/{user_name}", method =  RequestMethod.GET)
     // url传参 @PathVariable Long id
