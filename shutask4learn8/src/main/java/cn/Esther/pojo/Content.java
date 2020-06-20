@@ -1,13 +1,15 @@
 package cn.Esther.pojo;
 
-public class Comment {
+public class Content {
     private Long id;
 
-    private Long pid;
+    private Integer type;
+
+    private String img;
 
     private String content;
 
-    private String status;
+    private String url;
 
     private Long createAt;
 
@@ -25,12 +27,20 @@ public class Comment {
         this.id = id;
     }
 
-    public Long getPid() {
-        return pid;
+    public Integer getType() {
+        return type;
     }
 
-    public void setPid(Long pid) {
-        this.pid = pid;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img == null ? null : img.trim();
     }
 
     public String getContent() {
@@ -38,15 +48,15 @@ public class Comment {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.content = content == null ? null : content.trim();
     }
 
-    public String getStatus() {
-        return status;
+    public String getUrl() {
+        return url;
     }
 
-    public void setStatus(String status) {
-        this.status = status ;
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public Long getCreateAt() {
@@ -79,19 +89,5 @@ public class Comment {
 
     public void setUpdateBy(Long updateBy) {
         this.updateBy = updateBy;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", pid=" + pid +
-                ", content='" + content + '\'' +
-                ", status='" + status + '\'' +
-                ", createAt=" + createAt +
-                ", createBy=" + createBy +
-                ", updateAt=" + updateAt +
-                ", updateBy=" + updateBy +
-                '}';
     }
 }
