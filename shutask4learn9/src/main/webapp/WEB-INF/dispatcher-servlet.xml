@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!--        mvc注解驱动-->
+    <mvc:annotation-driven/>
+    <!-- 配置controller扫描包   扫描存放控制器的包名-->
+    <context:component-scan base-package="cn.Esther.controller"/>
+
+    <mvc:default-servlet-handler/>
+    <!--   视图解析 -->
+    <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" p:order="1"/>
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>tiles/layout.xml</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
+<!--11.41-->

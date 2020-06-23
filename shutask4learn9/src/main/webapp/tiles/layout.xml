@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation/DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!--    tiles基础模板-->
+<!--base放好头部和脚部-->
+<tiles-definitions>
+    <definition name="baseTemplate" template="/view/mainLayout.jsp">
+        <put-attribute name="a" value="/view/a.jsp"/>
+        <put-attribute name="c" value="/view/c.jsp"/>
+    </definition>
+
+    <definition name="baseTemplate2" template="/view/mainLayout.jsp">
+        <put-attribute name="a" value="/view/header.jsp"/>
+        <put-attribute name="c" value="/view/foot.jsp"/>
+    </definition>
+
+<!--extends后面跟 继承 eg上面的基础模板-->
+    <definition name="index" extends="baseTemplate">
+<!--        没有跳转-->
+        <put-attribute name="b" value="/view/b.jsp"/>
+    </definition>
+
+
+    <definition name="myView2" extends="baseTemplate2">
+        <put-attribute name="b" value="/view/body_index.jsp"/>
+    </definition>
+
+</tiles-definitions>
